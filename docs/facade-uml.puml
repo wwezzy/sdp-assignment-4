@@ -1,0 +1,71 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+hide circle
+class FacadeDemo {
+  +{static} main(args: String[]): void
+}
+class HomeTheaterFacade {
+  -dvdPlayer: DvdPlayer {readOnly}
+  -amplifier: Amplifier {readOnly}
+  -projector: Projector {readOnly}
+  -screen: Screen {readOnly}
+  -lights: TheaterLights {readOnly}
+  -watching: boolean
+  +HomeTheaterFacade()
+  +watchMovie(movie: String): void
+  +endMovie(): void
+  +isWatching(): boolean
+}
+class DvdPlayer {
+  -poweredOn: boolean
+  -currentMovie: String
+  +on(): void
+  +play(movie: String): void
+  +stop(): void
+  +off(): void
+}
+class Amplifier {
+  -poweredOn: boolean
+  -volume: int
+  -source: DvdPlayer
+  +on(): void
+  +setSource(source: DvdPlayer): void
+  +setVolume(volume: int): void
+  +off(): void
+}
+class Projector {
+  -poweredOn: boolean
+  -input: DvdPlayer
+  +on(): void
+  +setInput(input: DvdPlayer): void
+  +showPicture(screen: Screen): void
+  +off(): void
+}
+class Screen {
+  -lowered: boolean
+  +down(): void
+  +up(): void
+  +isDown(): boolean
+}
+class TheaterLights {
+  -brightness: int
+  +dim(brightness: int): void
+  +on(): void
+  +getBrightness(): int
+}
+FacadeDemo ..> HomeTheaterFacade : uses
+HomeTheaterFacade --> DvdPlayer
+HomeTheaterFacade --> Amplifier
+HomeTheaterFacade --> Projector
+HomeTheaterFacade --> Screen
+HomeTheaterFacade --> TheaterLights
+Amplifier --> DvdPlayer : source
+Projector --> DvdPlayer : input
+Projector ..> Screen : parameter
+note bottom of HomeTheaterFacade
+Constants, observation getters on devices,
+private helpers and the package-private
+test constructor are omitted for readability.
+end note
+@enduml
