@@ -38,7 +38,7 @@ Shutdown stops playback before switching off the DVD player. It also switches of
 
 ## Run in IntelliJ IDEA
 
-The UML diagram and editable diagram sources are available in the `docs` directory.
+The PNG and SVG diagrams are generated with PlantUML from `docs/facade-uml.puml`. The source can be opened in a PlantUML editor or the IntelliJ PlantUML plugin.
 
 ![Home Theater Facade UML](docs/facade-uml.png)
 

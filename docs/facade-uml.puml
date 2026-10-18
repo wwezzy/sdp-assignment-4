@@ -1,6 +1,13 @@
 @startuml
 skinparam classAttributeIconSize 0
 skinparam backgroundColor white
+skinparam defaultFontName Arial
+skinparam defaultFontSize 16
+skinparam dpi 180
+skinparam classFontStyle bold
+skinparam shadowing false
+skinparam roundcorner 0
+skinparam linetype polyline
 hide circle
 class FacadeDemo {
   +{static} main(args: String[]): void
@@ -63,9 +70,4 @@ HomeTheaterFacade --> TheaterLights
 Amplifier --> DvdPlayer : source
 Projector --> DvdPlayer : input
 Projector ..> Screen : parameter
-note bottom of HomeTheaterFacade
-Constants, observation getters on devices,
-private helpers and the package-private
-test constructor are omitted for readability.
-end note
 @enduml
